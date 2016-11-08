@@ -1,7 +1,9 @@
 [package]
 name = "blob-uuid"
 version = "0.1.0"
-authors = ["lee"]
+authors = ["Jovansonlee Cesar <ivanceras@gmail.com>"]
+
+[lib]
 
 [dependencies]
 rustc-serialize = "0.3"
