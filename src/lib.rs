@@ -15,7 +15,7 @@ pub enum ConvertError{
     FromBase64Error(FromBase64Error)
 }
 
-trait ToBlob{
+pub trait ToBlob{
     fn to_blob(&self) -> String;
 }
 
@@ -25,7 +25,7 @@ impl ToBlob for Uuid{
     }
 }
 
-trait FromBlob{
+pub trait FromBlob{
     fn to_uuid(&self) -> Result<Uuid, ConvertError>;
 }
 
