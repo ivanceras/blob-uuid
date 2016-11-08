@@ -3,7 +3,6 @@ extern crate uuid;
 use rustc_serialize::base64::ToBase64;
 use rustc_serialize::base64::FromBase64;
 use rustc_serialize::base64::URL_SAFE;
-use rustc_serialize::base64::STANDARD;
 use rustc_serialize::base64::FromBase64Error;
 use uuid::ParseError;
 
