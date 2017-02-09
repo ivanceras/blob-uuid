@@ -12,4 +12,4 @@ keywords = ["uuid", "blob", "base64"]
 
 [dependencies]
 rustc-serialize = "0.3"
-uuid = {version = "0.3", features = ["v4"]}
+uuid = {version = "0.4", features = ["v4"]}
