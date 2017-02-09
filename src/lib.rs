@@ -56,6 +56,18 @@ fn test_blobs() {
     assert_eq!(blob, uuid.to_blob());
 }
 
+
+#[test]
+fn test_more_blobs(){
+    for _ in 0..10{
+        let uuid = Uuid::new_v4();
+        let blob = uuid.to_blob();
+        assert_eq!(blob.chars().count(), 22);
+        println!("{}   |   {}",uuid,blob);
+    }
+    //panic!();
+}
+
 pub fn uuid_to_blob(uuid: &Uuid) -> String{
     uuid.to_blob()
 }
