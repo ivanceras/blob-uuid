@@ -11,7 +11,7 @@ Convert Uuid to a url friendly 22 character string blob
 ```
 
 
-    uuid                               |   blob
+uuid                               |   blob
 ---------------------------------------|-------------------------
  8ef65ee9-a039-4bf2-a4b3-687fcc1f3cc3   |   jvZe6aA5S_Kks2h_zB88ww
  c38ba949-491b-417d-b488-aa4748c13a00   |   w4upSUkbQX20iKpHSME6AA
