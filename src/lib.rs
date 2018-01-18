@@ -1,10 +1,7 @@
-extern crate rustc_serialize;
+extern crate base64;
 extern crate uuid;
-use rustc_serialize::base64::ToBase64;
-use rustc_serialize::base64::FromBase64;
-use rustc_serialize::base64::URL_SAFE;
-use rustc_serialize::base64::FromBase64Error;
 use uuid::ParseError;
+use base64::DecodeError;
 
 
 use uuid::Uuid;
@@ -12,26 +9,32 @@ use uuid::Uuid;
 #[derive(Debug)]
 pub enum ConvertError{
     ParseError(ParseError),
-    FromBase64Error(FromBase64Error)
+    FromBase64Error(DecodeError)
 }
 
-pub trait ToBlob{
-    fn to_blob(&self) -> String;
+///Convert uuid to a 22 character string blob
+///```rust
+///extern crate blob_uuid;
+///fn main(){
+///   let uuid = Uuid::parse_str("557c8018-5e21-4b74-8bb0-9040e2e8ead1").unwrap();
+///   assert_eq!("VXyAGF4hS3SLsJBA4ujq0Q", blob_uuid::to_blob(uuid));
+///}
+///
+///```
+pub fn to_blob(uuid: &Uuid) -> String{
+        base64::encode_config(uuid.as_bytes(), base64::URL_SAFE_NO_PAD)
 }
 
-impl ToBlob for Uuid{
-    fn to_blob(&self) -> String{
-        self.as_bytes().to_base64(URL_SAFE)
-    }
-}
-
-pub trait FromBlob{
-    fn to_uuid(&self) -> Result<Uuid, ConvertError>;
-}
-
-impl FromBlob for str{
-    fn to_uuid(&self) -> Result<Uuid, ConvertError>{
-        match self.from_base64(){
+/// Convert a string blob back to uuid 
+/// ```rust
+///extern crate blob_uuid;
+///fn main(){
+/// let uuid = Uuid::parse_str("557c8018-5e21-4b74-8bb0-9040e2e8ead1").unwrap();
+/// assert_eq!(uuid, blob_uuid::to_uuid("VXyAGF4hS3SLsJBA4ujq0Q").unwrap());
+///}
+/// ```
+pub fn to_uuid(blob: &str) -> Result<Uuid, ConvertError>{
+        match base64::decode_config(blob, base64::URL_SAFE_NO_PAD){
             Ok(bytes) => {
                 match Uuid::from_bytes(&bytes){
                     Ok(uuid) => Ok(uuid),
@@ -42,36 +45,33 @@ impl FromBlob for str{
                 Err(ConvertError::FromBase64Error(e))
             }
         }
+}
+
+
+#[cfg(test)]
+mod test{
+    use super::*;
+
+    #[test]
+    fn test_blobs() {
+        let uuid_str = "557c8018-5e21-4b74-8bb0-9040e2e8ead1";
+        println!("uuid_str: {}", uuid_str);
+        let blob = "VXyAGF4hS3SLsJBA4ujq0Q";
+        println!("blob: {}", blob);
+        let uuid = Uuid::parse_str(uuid_str).unwrap();
+        assert_eq!(uuid, to_uuid(blob).unwrap());
+        assert_eq!(blob, to_blob(&uuid));
+    }
+
+
+    #[test]
+    fn test_more_blobs(){
+        for _ in 0..10{
+            let uuid = Uuid::new_v4();
+            let blob = to_blob(&uuid);
+            assert_eq!(blob.chars().count(), 22);
+            println!("{}   |   {}",uuid,blob);
+        }
     }
 }
 
-#[test]
-fn test_blobs() {
-    let uuid_str = "557c8018-5e21-4b74-8bb0-9040e2e8ead1";
-    println!("uuid_str: {}", uuid_str);
-    let blob = "VXyAGF4hS3SLsJBA4ujq0Q";
-    println!("blob: {}", blob);
-    let uuid = Uuid::parse_str(uuid_str).unwrap();
-    assert_eq!(uuid, blob.to_uuid().unwrap());
-    assert_eq!(blob, uuid.to_blob());
-}
-
-
-#[test]
-fn test_more_blobs(){
-    for _ in 0..10{
-        let uuid = Uuid::new_v4();
-        let blob = uuid.to_blob();
-        assert_eq!(blob.chars().count(), 22);
-        println!("{}   |   {}",uuid,blob);
-    }
-    //panic!();
-}
-
-pub fn uuid_to_blob(uuid: &Uuid) -> String{
-    uuid.to_blob()
-}
-
-pub fn blob_to_uuid(blob: &str) -> Result<Uuid, ConvertError>{
-    blob.to_uuid()
-}

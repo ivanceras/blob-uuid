@@ -1,9 +1,9 @@
 [package]
 name = "blob-uuid"
-version = "0.1.2"
+version = "0.2.0"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
-description = "Converts Uuid to a url friendly 21 character string blob"
+description = "Converts Uuid to a url friendly 22 character string blob"
 readme = "README.md"
 repository = "https://github.com/ivanceras/blob-uuid"
 documentation = "https://docs.rs/blob-uuid"
@@ -11,5 +11,5 @@ keywords = ["uuid", "blob", "base64"]
 
 
 [dependencies]
-rustc-serialize = "0.3"
-uuid = {version = "0.4", features = ["v4"]}
+base64 = "0.9"
+uuid = {version = "0.5", features = ["v4"]}
