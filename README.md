@@ -1,18 +1,22 @@
+
+[![](https://travis-ci.org/ivanceras/blob-uuid.svg?branch=master)](https://travis-ci.org/ivanceras/blob-uuid)
+
 Convert Uuid to a url friendly 22 character string blob
 
-```rs
-    let uuid_str = "557c8018-5e21-4b74-8bb0-9040e2e8ead1";
-    println!("uuid_str: {}", uuid_str);
-    let blob = "VXyAGF4hS3SLsJBA4ujq0Q";
-    println!("blob: {}", blob);
-    let uuid = Uuid::parse_str(uuid_str).unwrap();
-    assert_eq!(uuid, blob.to_uuid().unwrap());
-    assert_eq!(blob, uuid.to_blob());
+For the purpose of using in a unique url, but still shorted than the 36 character stringified uuid
+
+
+### Example usage
+
+```rust
+
+   let uuid = Uuid::parse_str("557c8018-5e21-4b74-8bb0-9040e2e8ead1").unwrap();
+   assert_eq!("VXyAGF4hS3SLsJBA4ujq0Q", blob_uuid::to_blob(uuid));
 ```
 
 
-uuid                               |   blob
----------------------------------------|-------------------------
+uuid                                    |   blob
+----------------------------------------|-------------------------
  8ef65ee9-a039-4bf2-a4b3-687fcc1f3cc3   |   jvZe6aA5S_Kks2h_zB88ww
  c38ba949-491b-417d-b488-aa4748c13a00   |   w4upSUkbQX20iKpHSME6AA
  d1504e8e-dff6-4b9b-a0b1-50c447b5d1a4   |   0VBOjt_2S5ugsVDER7XRpA
