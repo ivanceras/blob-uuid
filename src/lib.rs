@@ -1,13 +1,13 @@
 extern crate base64;
 extern crate uuid;
 use base64::DecodeError;
-use uuid::ParseError;
+use uuid::BytesError;
 
 use uuid::Uuid;
 
 #[derive(Debug)]
 pub enum ConvertError {
-    ParseError(ParseError),
+    BytesError(BytesError),
     FromBase64Error(DecodeError),
 }
 
@@ -39,9 +39,9 @@ pub fn to_blob(uuid: &Uuid) -> String {
 /// ```
 pub fn to_uuid(blob: &str) -> Result<Uuid, ConvertError> {
     match base64::decode_config(blob, base64::URL_SAFE_NO_PAD) {
-        Ok(bytes) => match Uuid::from_bytes(&bytes) {
+        Ok(bytes) => match Uuid::from_slice(&bytes) {
             Ok(uuid) => Ok(uuid),
-            Err(e) => Err(ConvertError::ParseError(e)),
+            Err(e) => Err(ConvertError::BytesError(e)),
         },
         Err(e) => Err(ConvertError::FromBase64Error(e)),
     }
