@@ -11,5 +11,5 @@ keywords = ["uuid", "blob", "base64"]
 
 
 [dependencies]
-base64 = "0.9"
-uuid = {version = "0.5", features = ["v4"]}
+base64 = "0.10.0"
+uuid = { version = "0.7.1", features = ["v4"] }
