@@ -15,7 +15,7 @@ pub enum ConvertError {
 /// ```rust
 ///  extern crate uuid;
 ///  use uuid::Uuid;
-///  
+///
 ///  extern crate blob_uuid;
 ///  fn main(){
 ///     let uuid = Uuid::parse_str("557c8018-5e21-4b74-8bb0-9040e2e8ead1").unwrap();
@@ -25,6 +25,13 @@ pub enum ConvertError {
 /// ```
 pub fn to_blob(uuid: &Uuid) -> String {
     base64::encode_config(uuid.as_bytes(), base64::URL_SAFE_NO_PAD)
+}
+
+/// Generate a random uuid and return its string blob
+///
+pub fn random_blob() -> String {
+    let uuid = Uuid::new_v4();
+    to_blob(&uuid)
 }
 
 /// Convert a string blob back to uuid

@@ -1,5 +1,5 @@
 [package]
-name = "blob-uuid"
+name = "blob-uuid-cli"
 version = "0.3.0"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
@@ -12,13 +12,6 @@ edition = "2018"
 
 
 [dependencies]
-base64 = "0.10.0"
+blob-uuid = "0.3.0"
+structopt = "0.2.15"
 uuid = { version = "0.7.1", features = ["v4"] }
-
-[workspace]
-members = [
-    "cli"
-]
-
-[replace]
-"blob-uuid:0.3.0" = { path = "./" }
