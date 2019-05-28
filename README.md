@@ -3,7 +3,7 @@
 
 Convert Uuid to a url friendly 22 character string blob
 
-For the purpose of using in a unique url, but still shorted than the 36 character stringified uuid
+This is useful for url links to a unique record,  and is shorter than the 36 character stringified uuid.
 
 
 ### Example usage
@@ -15,6 +15,7 @@ For the purpose of using in a unique url, but still shorted than the 36 characte
 ```
 
 
+#### Example conversions:
 uuid                                    |   blob
 ----------------------------------------|-------------------------
  8ef65ee9-a039-4bf2-a4b3-687fcc1f3cc3   |   jvZe6aA5S_Kks2h_zB88ww
@@ -26,4 +27,14 @@ uuid                                    |   blob
  2a317215-53fd-45de-95e9-f74c16a13b6a   |   KjFyFVP9Rd6V6fdMFqE7ag
  8d2c25e2-73d6-4f4a-820a-f671c0991398   |   jSwl4nPWT0qCCvZxwJkTmA
  55458e6b-fcce-446e-884f-ca61a8fd7e9d   |   VUWOa_zORG6IT8phqP1-nQ
+
+
+### Using the cli
+```
+cargo install blob-uuid-cli
+
+blob-uuid-cli 8ef65ee9-a039-4bf2-a4b3-687fcc1f3cc3
+jvZe6aA5S_Kks2h_zB88ww
+```
+Calling `blob-uuid-cli` without argument will generate a return a blob from a generated uuid
 
