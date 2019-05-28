@@ -21,4 +21,4 @@ members = [
 ]
 
 [replace]
-"blob-uuid:0.3.0" = { path = "./" }
+"blob-uuid:0.3.1" = { path = "./" }
