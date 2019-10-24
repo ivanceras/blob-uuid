@@ -33,8 +33,8 @@ uuid                                    |   blob
 ```
 cargo install blob-uuid-cli
 
-blob-uuid-cli 8ef65ee9-a039-4bf2-a4b3-687fcc1f3cc3
+blob-uuid 8ef65ee9-a039-4bf2-a4b3-687fcc1f3cc3
 jvZe6aA5S_Kks2h_zB88ww
 ```
-Calling `blob-uuid-cli` without argument will generate a return a blob from a generated uuid
+Calling `blob-uuid` without argument will generate a return a blob from a generated uuid
 

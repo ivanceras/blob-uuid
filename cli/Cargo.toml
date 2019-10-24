@@ -1,6 +1,6 @@
 [package]
 name = "blob-uuid-cli"
-version = "0.3.0"
+version = "0.4.0"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
 description = "Converts Uuid to a url friendly 22 character string blob"
@@ -10,8 +10,10 @@ documentation = "https://docs.rs/blob-uuid"
 keywords = ["uuid", "blob", "base64"]
 edition = "2018"
 
+[[bin]]
+name = "blob-uuid"
+path = "src/main.rs"
 
 [dependencies]
-blob-uuid = "0.3.1"
+blob-uuid = "0.4.0"
 structopt = "0.2.15"
-uuid = { version = "0.7.1", features = ["v4"] }
