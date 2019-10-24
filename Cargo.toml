@@ -1,6 +1,6 @@
 [package]
 name = "blob-uuid"
-version = "0.3.1"
+version = "0.4.0"
 authors = [ "Jovansonlee Cesar <ivanceras@gmail.com>" ]
 license = "MIT"
 description = "Converts Uuid to a url friendly 22 character string blob"
