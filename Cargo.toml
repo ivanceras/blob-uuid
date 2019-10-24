@@ -13,12 +13,10 @@ edition = "2018"
 
 [dependencies]
 base64 = "0.10.0"
-uuid = { version = "0.7.1", features = ["v4"] }
+uuid = { version = "0.8.1", features = ["v4"] }
 
 [workspace]
 members = [
     "cli"
 ]
 
-[replace]
-"blob-uuid:0.3.1" = { path = "./" }
