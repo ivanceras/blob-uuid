@@ -10,10 +10,14 @@ documentation = "https://docs.rs/blob-uuid"
 keywords = ["uuid", "blob", "base64"]
 edition = "2018"
 
-
 [dependencies]
 base64 = "0.10.0"
 uuid = { version = "0.8.1", features = ["v4"] }
+
+[features]
+default = []
+wasm-bindgen = ["uuid/wasm-bindgen"]
+stdweb = ["uuid/stdweb"]
 
 [workspace]
 members = [
