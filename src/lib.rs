@@ -1,5 +1,4 @@
 use base64::DecodeError;
-use uuid::Error;
 
 pub use uuid::Uuid;
 
