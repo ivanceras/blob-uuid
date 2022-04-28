@@ -12,8 +12,8 @@ edition = "2018"
 
 
 [dependencies]
-base64 = "0.10.0"
-uuid = { version = "0.8.1", features = ["v4"] }
+base64 = "0.13.0"
+uuid = { version = "1.0.0", features = ["v4"] }
 
 [workspace]
 members = [
